@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.2
 import PackageDescription
 
 let package = Package(
@@ -7,13 +7,15 @@ let package = Package(
         .library(name: "Bagel", targets: ["Bagel"])
     ],
     dependencies: [
-        .package(url: "https://github.com/AccioSupport/CocoaAsyncSocket.git", .branch("master")),
+        .package(url: "https://github.com/robbiehanson/CocoaAsyncSocket.git", .branch("master")),
     ],
     targets: [
         .target(
             name: "Bagel",
             dependencies: ["CocoaAsyncSocket"],
-            path: "iOS/Source"
+            path: "iOS/Source",
+            publicHeadersPath: "."
         )
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
